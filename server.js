@@ -13,5 +13,8 @@ app.use(methodOverride('_method'));
 app.engine('handlebars', exphbs ({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
+var routes = require('./controllers/burgers_controllers');
+app.use('/', routes);
+
 var PORT = 8080;
 app.listen(PORT);
