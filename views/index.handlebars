@@ -1,35 +1,49 @@
 <div class="container">
+    {{!-- Title --}}
     <div class="row">
         <div class="col-sm-12 text-center">
             <h1>EAT DA BURGER</h1>
         </div>
     </div>
     <div class="row">
+        {{!-- Burgers ready to eat --}}
         <div class="col-sm-6 text-center">
-            <div class="row">
-                <div class="col-sm-7">
                     <p>Available Burgers</p>
+            <div class="row" style="border: solid 1px blue">
+                <div class="col-sm-12" style="border: solid 1px black">
+                    <ul>
+                        {{!-- For loop to go through uneaten burgers --}}
                         {{#each data}}
+                            {{!-- Making for loop only get uneaten burgers --}}
                             {{#unless this.devoured}}
-                            <pre>{{this.id}}. {{this.burger_name}}</pre>
-                            {{/unless}}
-                        {{/each}}
-                </div>
-                <div class="col-sm-5">
-                    {{#each data}}
-                        {{#unless this.devoured}}
+                            <li>
+                            <h2>{{this.id}}. {{this.burger_name}}</h2>
                             <form method="POST" action="/burgers/update?_method=PUT" class="button-size">
                                 <input type="hidden" name="burger_id" type="text" value={{this.id}}>
                                 <br>
                                 <button type="submit" class="btn">DEVOUR {{this.id}}</button>
                             </form>
-                        {{/unless}}
-                    {{/each}}
+                            </li>
+                            {{/unless}}
+                        {{/each}}
+                    </ul>
                 </div>
             </div>
         </div>
+        {{!-- Burgers that have already been eaten --}}
         <div class="col-sm-6 text-center">
-            <p>Eaten Burgers</p>
+            <div class="row">
+                <div class="col-sm-12">
+                    <p>Eaten Burgers</p>
+                        {{!-- For loop to go through eaten burgers --}}
+                        {{#each data}}
+                            {{!-- If burger has not been eaten do not include --}}
+                            {{#if this.devoured}}
+                            <input class="form-control" type="text" placeholder="{{this.id}}. {{this.burger_name}}"></input>
+                            {{/if}}
+                        {{/each}}
+                </div>
+            </div>
         </div>
     </div>
 </div>
