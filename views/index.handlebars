@@ -1,1 +1,35 @@
-<p>Connected</p>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <h1>EAT DA BURGER</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 text-center">
+            <div class="row">
+                <div class="col-sm-7">
+                    <p>Available Burgers</p>
+                        {{#each data}}
+                            {{#unless this.devoured}}
+                            <pre>{{this.id}}. {{this.burger_name}}</pre>
+                            {{/unless}}
+                        {{/each}}
+                </div>
+                <div class="col-sm-5">
+                    {{#each data}}
+                        {{#unless this.devoured}}
+                            <form method="POST" action="/burgers/update?_method=PUT" class="button-size">
+                                <input type="hidden" name="burger_id" type="text" value={{this.id}}>
+                                <br>
+                                <button type="submit" class="btn">DEVOUR {{this.id}}</button>
+                            </form>
+                        {{/unless}}
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 text-center">
+            <p>Eaten Burgers</p>
+        </div>
+    </div>
+</div>
