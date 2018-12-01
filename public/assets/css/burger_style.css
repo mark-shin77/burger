@@ -1,3 +1,36 @@
 body{
     background: tan;
 }
+#available-burgers{
+    margin-bottom: -1%;
+}
+
+.button-size{
+    margin-left: 15%;
+}
+
+.uneaten-burgers{
+    background: white;
+    color: black;
+    width: 80%;
+    margin: 10px auto;
+    text-align: center;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+
+.eaten-burgers{
+    width: 50%;
+    margin: 10px auto;
+    text-align: center;
+    color: black;
+}
+
+#userInput{
+    width: 50%;
+    margin: 5% auto 1% auto;
+}

@@ -7,7 +7,7 @@
     </div>
     <div class="row">
         <div class="col-sm-12">
-            <img src="" alt="">
+            <img src="/assets/img/burger.png" alt="" height="200px">
         </div>
     </div>
 </div>
@@ -17,29 +17,23 @@
     <div class="row">
         {{!-- Burgers ready to eat --}}
         <div class="col-sm-6 text-center">
-                    <p>Available Burgers</p>
+                    <p id="available-burger">Available Burgers</p>
             <div class="row">
-                <div class="col-sm-7">
+                <div class="col-sm-12">
                         {{!-- For loop to go through uneaten burgers --}}
                         {{#each data}}
                             {{!-- Making for loop only get uneaten burgers --}}
                             {{#unless this.devoured}}
-                            <div class="row">
-                            <h2>{{this.id}}. {{this.burger_name}}</h2>
-                            </div>
-                            {{/unless}}
-                        {{/each}}
-                </div>
-                <div class="col-sm-5">
-                    {{#each data}}
-                        {{#unless this.devoured}}
-                            <form method="POST" action="/burgers/update?_method=PUT" class="button-size">
+                            <div class="row uneaten-burgers">
+                            <p>{{this.id}}. {{this.burger_name}}</p>
+                            <form method="POST" action="/burgers/update?_method=PUT" class="button-size form-inline">
                                 <input type="hidden" name="burger_id" type="text" value={{this.id}}>
                                 <br>
                                 <button type="submit" class="btn btn-secondary btn-sm">DEVOUR {{this.id}}</button>
                             </form>
-                        {{/unless}}
-                    {{/each}}
+                            </div>
+                            {{/unless}}
+                        {{/each}}
                 </div>
             </div>
         </div>
@@ -52,7 +46,7 @@
                         {{#each data}}
                             {{!-- If burger has not been eaten do not include --}}
                             {{#if this.devoured}}
-                            <input class="form-control" type="text" placeholder="{{this.id}}. {{this.burger_name}}"></input>
+                            <form class="form-control eaten-burgers" type="text">{{this.id}}. {{this.burger_name}}</form>
                             {{/if}}
                         {{/each}}
                 </div>
@@ -66,7 +60,7 @@
     <div class="row">
         <div class="col-sm-12 text-center">
             <form action="/burgers/create" method="POST">
-                <input type="text" name="burger_name" class="form-control" value="" id="enter_text">
+                <input type="text" name="burger_name" class="form-control" value="" id="userInput">
                 <button type="submit" class="btn btn-primary btn-sm" id="text-enter-button">SUBMIT</button>
             </form>
             <p>Enter in a burger you would like to eat!</p>
