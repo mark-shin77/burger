@@ -18,4 +18,4 @@ Users of the application can create custom named burgers and submit them through
 
 ## ScreenShot
 Home Page
-![Screen shot 1](app/public/images/SS.PNG)
+![Screen shot 1](/public/assets/img/SS.PNG)
