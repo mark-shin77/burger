@@ -2,12 +2,12 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12 text-center">
-            <h1>EAT DA BURGER</h1>
+            <h1 id="title">EAT DA BURGER</h1>
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12">
-            <img src="/assets/img/burger.png" alt="" height="200px">
+        <div class="col-sm-12 text-center">
+            <img class="hamburgerImage" src="/assets/img/burger.png" alt="hamburger" height="200px">
         </div>
     </div>
 </div>
@@ -17,7 +17,7 @@
     <div class="row">
         {{!-- Burgers ready to eat --}}
         <div class="col-sm-6 text-center">
-                    <p id="available-burger">Available Burgers</p>
+                <h4 class="available-burgers">Available Burgers</h4>
             <div class="row">
                 <div class="col-sm-12">
                         {{!-- For loop to go through uneaten burgers --}}
@@ -25,11 +25,11 @@
                             {{!-- Making for loop only get uneaten burgers --}}
                             {{#unless this.devoured}}
                             <div class="row uneaten-burgers">
-                            <p>{{this.id}}. {{this.burger_name}}</p>
+                            <p class="uneaten-burgers-display">{{this.id}}. {{this.burger_name}}</p>
                             <form method="POST" action="/burgers/update?_method=PUT" class="button-size form-inline">
                                 <input type="hidden" name="burger_id" type="text" value={{this.id}}>
                                 <br>
-                                <button type="submit" class="btn btn-secondary btn-sm">DEVOUR {{this.id}}</button>
+                                <button type="submit" class="btn btn-secondary btn-sm float-right devour-btn">DEVOUR</button>
                             </form>
                             </div>
                             {{/unless}}
@@ -41,7 +41,7 @@
         <div class="col-sm-6 text-center">
             <div class="row">
                 <div class="col-sm-12">
-                    <p>Eaten Burgers</p>
+                    <h4 id="unavailable-burger">Eaten Burgers</h4>
                         {{!-- For loop to go through eaten burgers --}}
                         {{#each data}}
                             {{!-- If burger has not been eaten do not include --}}
@@ -59,11 +59,11 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12 text-center">
+            <h4 id="enter-burger">Enter in a burger you would like to eat!</h4>
             <form action="/burgers/create" method="POST">
-                <input type="text" name="burger_name" class="form-control" value="" id="userInput">
-                <button type="submit" class="btn btn-primary btn-sm" id="text-enter-button">SUBMIT</button>
+                <input type="text" name="burger_name" class="form-control" id="userInput">
+                <button type="submit" class="btn btn-secondary" id="text-enter-button">SUBMIT</button>
             </form>
-            <p>Enter in a burger you would like to eat!</p>
         </div>
     </div>
 </div>
