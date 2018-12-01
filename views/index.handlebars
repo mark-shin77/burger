@@ -24,11 +24,16 @@
                         {{#each data}}
                             {{!-- Making for loop only get uneaten burgers --}}
                             {{#unless this.devoured}}
+                            {{!-- Row for new burgers to be formed to --}}
                             <div class="row uneaten-burgers">
+                            {{!-- Id / Burger Name From db --}}
                             <p class="uneaten-burgers-display">{{this.id}}. {{this.burger_name}}</p>
+                            {{!-- Form to "devour the burger" --}}
                             <form method="POST" action="/burgers/update?_method=PUT" class="button-size form-inline">
+                                {{!-- Inputting the Id of the burger that gets devoured --}}
                                 <input type="hidden" name="burger_id" type="text" value={{this.id}}>
                                 <br>
+                                {{!-- Button to devour burger --}}
                                 <button type="submit" class="btn btn-secondary btn-sm float-right devour-btn">DEVOUR</button>
                             </form>
                             </div>
@@ -60,6 +65,7 @@
     <div class="row">
         <div class="col-sm-12 text-center">
             <h4 id="enter-burger">Enter in a burger you would like to eat!</h4>
+            {{!-- Form to add new burgers to page --}}
             <form action="/burgers/create" method="POST">
                 <input type="text" name="burger_name" class="form-control" id="userInput">
                 <button type="submit" class="btn btn-secondary" id="text-enter-button">SUBMIT</button>
@@ -67,3 +73,5 @@
         </div>
     </div>
 </div>
+
+<br><br>
