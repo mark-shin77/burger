@@ -17,5 +17,4 @@ Users of the application can create custom named burgers and submit them through
 - Bootstrap
 
 ## ScreenShot
-Home Page
 ![Screen shot 1](/public/assets/img/SS.PNG)
